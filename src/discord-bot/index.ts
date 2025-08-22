@@ -4,7 +4,7 @@ import {
   PermissionsBitField, ActionRowBuilder, ButtonBuilder, ButtonStyle,
 } from "discord.js";
 import dotenv from "dotenv";
-import { db, admin } from "../lib/firebase";
+import { db, admin } from "./firebase";
 
 dotenv.config();
 

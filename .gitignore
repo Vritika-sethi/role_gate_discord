@@ -41,3 +41,4 @@ yarn-error.log*
 next-env.d.ts
 serviceAccountKey.json
 .firebase
+/src/discord-bot/node_modules
