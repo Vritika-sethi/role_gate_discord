@@ -1,29 +1,33 @@
+// lib/firebase.ts
 import * as admin from "firebase-admin";
 import fs from "fs";
+import dotenv from "dotenv";
 
-// IMPORTANT: Make sure the path to your service account key is correct.
-// This path is relative to the root of your project where you run the 'next dev' command.
-const serviceAccountPath = "./serviceAccountKey.json";
-
-if (!fs.existsSync(serviceAccountPath)) {
-  console.error("❌ CRITICAL: Missing serviceAccountKey.json in the project root!");
-  console.error("❌ The application will not be able to connect to Firestore.");
-  process.exit(1);
-}
-
-const serviceAccount = require("../../serviceAccountKey.json");
+dotenv.config({path: ".env.local"});
+console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON as string)
+const serviceAccountPath = JSON.parse(
+  Buffer.from(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON!, "base64").toString("utf-8")
+);
+// const serviceAccountPath = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON as string);
+// if (!fs.existsSync(serviceAccountPath)) {
+//   console.error("❌ Missing serviceAccountKey.json at project root.");
+//   process.exit(1);
+// }
+console.log(serviceAccountPath)
+// console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON)
+// const serviceAccount = require("../../serviceAccountKey.json");
 
 if (!admin.apps.length) {
   try {
     admin.initializeApp({
-      credential: admin.credential.cert(serviceAccount),
+      credential: admin.credential.cert(serviceAccountPath),
     });
-    console.log("✅ Firestore initialized successfully.");
-  } catch (error: any) {
-    console.error("❌ Firestore initialization failed:", error.message);
+    console.log("✅ Firestore initialized");
+  } catch (err: any) {
+    console.error("❌ Firestore init failed:", err?.message);
     process.exit(1);
   }
 }
 
 export const db = admin.firestore();
-export { admin }; // Export the admin namespace
+export { admin };

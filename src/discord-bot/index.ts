@@ -6,7 +6,7 @@ import {
 import dotenv from "dotenv";
 import { db, admin } from "../lib/firebase";
 
-dotenv.config({ path: ".env.local" });
+dotenv.config();
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
