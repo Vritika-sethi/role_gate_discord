@@ -1,6 +1,6 @@
 // pages/api/siwe/logout.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import * as cookie from "cookie";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
