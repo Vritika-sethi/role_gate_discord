@@ -1,6 +1,7 @@
 // pages/api/siwe/verify.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+// Change the import statement to this format
+import * as cookie from "cookie";
 import { z } from "zod";
 import { recoverMessageAddress } from "viem";
 import { session } from "@/lib/serverAuth";
