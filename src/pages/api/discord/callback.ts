@@ -1,6 +1,6 @@
 // pages/api/discord/callback.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import * as cookie from "cookie"; // This line is corrected
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { code, state } = req.query;
