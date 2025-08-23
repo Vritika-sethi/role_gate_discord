@@ -37,7 +37,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production",
       path: "/", maxAge: 60 * 60 * 24 * 7,
     }));
-    res.redirect(`/?guildId=${guildId}`);
+    res.redirect(`/?guildId=${guildId}&userId=${userId}`);
   } catch (e: any) {
     console.error("Discord callback error:", e);
     res.status(500).send(e?.message ?? "Error");
