@@ -1,6 +1,6 @@
 // pages/api/discord/add-role.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import * as cookie from "cookie"; // This line is corrected
 import { db, admin } from "@/lib/firebase";
 import { getContract, readContract } from "thirdweb";
 import { thirdwebClient } from "@/lib/thirdweb";
