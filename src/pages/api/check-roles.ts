@@ -1,6 +1,6 @@
 // pages/api/check-roles.ts
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import * as cookie from "cookie"; // This line is corrected
 import { db, admin } from "@/lib/firebase";
 import { thirdwebClient } from "@/lib/thirdweb";
 import { CHAIN, ERC721_ABI} from "@/lib/chain";
