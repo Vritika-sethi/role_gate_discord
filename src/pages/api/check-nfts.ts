@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import cookie from "cookie";
+import * as cookie from "cookie";
 import { getContract, readContract } from "thirdweb";
 import { thirdwebClient } from "@/lib/thirdweb";
 import { CHAIN, ERC721_ABI } from "@/lib/chain";
